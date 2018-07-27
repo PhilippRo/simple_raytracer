@@ -6,11 +6,8 @@ using namespace math::vector;
 
 int main()
 {
-    print_to_console();
-
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
-
     // Start the game loop
     while (window.isOpen())
     {
