@@ -14,7 +14,7 @@ include_directories("${PROJECT_SOURCE_DIR}/include")
 
 add_executable(simple_raytracer ${SRC_FILES})
 
-find_package(SFML 2.4 COMPONENTS graphics REQUIRED)
+find_package(SFML 2.4 COMPONENTS graphics audio network window system REQUIRED)
 if(SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
     target_link_libraries(simple_raytracer ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
