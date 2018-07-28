@@ -1,6 +1,8 @@
-#include "primitives.h"
+#include <primitives.h>
+#include <vec3.h>
 
 using namespace primitives::polygons;
+using namespace math::vector;
 
 triangle::triangle()
 {
@@ -20,7 +22,7 @@ triangle::triangle(vec3 _a, vec3 _b, vec3 _c)
 
 }
 
-triangle::set_points(vec3 _a, vec3 _b, vec3 _c)
+void triangle::set_points(vec3 _a, vec3 _b, vec3 _c)
 {
 
   this->a = _a;
@@ -29,17 +31,17 @@ triangle::set_points(vec3 _a, vec3 _b, vec3 _c)
 
 }
 
-triangle::get_a()
+vec3 triangle::get_a()
 {
   return this->a;
 }
 
-triangle::get_b()
+vec3 triangle::get_b()
 {
   return this->b;
 }
 
-triangle::get_c()
+vec3 triangle::get_c()
 {
   return this->c;
 }
