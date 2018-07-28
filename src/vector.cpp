@@ -70,7 +70,6 @@ float vec3::get_norm()
 
 ///Operator override
 
-
 vec3 vec3::operator /(float norm)
 {
   vec3 vec_norm;
