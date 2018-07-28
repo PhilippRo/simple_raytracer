@@ -4,11 +4,10 @@
 
 using namespace math::vector;
 
-const unsigned int W = 800;
-const unsigned int H = 600;
-
 int main()
 {
+    const unsigned int W = 800;
+    const unsigned int H = 600;
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(W, H), "simple_raytracer");
     // Start the game loop
