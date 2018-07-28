@@ -4,13 +4,13 @@
 
 using namespace math::vector;
 
+const unsigned int W = 800;
+const unsigned int H = 600;
+
 int main()
 {
-    print_to_console();
-
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
-
+    sf::RenderWindow window(sf::VideoMode(W, H), "simple_raytracer");
     // Start the game loop
     while (window.isOpen())
     {
@@ -22,8 +22,6 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-        // Clear screen
-        window.clear();
         // Update the window
         window.display();
     }
