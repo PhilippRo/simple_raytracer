@@ -116,6 +116,20 @@ vec3 vec3::operator *(float arg)
 
 }
 
+bool vec3::operator ==(vec3 arg) const
+{
+    bool component_x_equal = this->x == arg.x;
+    bool component_y_equal = this->y == arg.y;
+    bool component_z_equal = this->z == arg.z;
+
+    if(component_x_equal && component_y_equal && component_z_equal)
+    {
+        return true;
+    }else
+    {
+        return false;
+    }
+}
 
 ///Non Member Functions
 
