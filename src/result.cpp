@@ -1,4 +1,6 @@
 #include <result.h>
+#include <vec3.h>
+
 #include <utility>
 
 template<class result_type>
@@ -26,9 +28,11 @@ bool result<result_type>::is_ok() const{
 
 template<class result_type>
 result_type&& result<result_type>::unwrap(){
-    if (this->ok()){
+    if (this->ok){
         return std::move(this->content);
     }else{
         throw result_exception();
     }
 }
+
+template class result<math::vector::vec3>;

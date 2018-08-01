@@ -15,22 +15,24 @@ namespace math {
         vec3(float _x, float _y, float _z);
 
         void set(float _x, float _y, float _z);
-        float get_x() const;
-        float get_y() const;
-        float get_z() const;
 
-        void print() const;
-        std::string to_str() const;
+        float get_x();
+        float get_y();
+        float get_z();
 
-        vec3 normalize() const;
-        float get_norm() const;
+        void print();
+        std::string to_str();
 
-        vec3 operator /(float arg) const;
-        vec3 operator +(vec3 arg) const;
-        vec3 operator -(vec3 arg) const;
-        vec3 operator *(float arg) const;
+        vec3 normalize();
+        float get_norm();
+
+        vec3 operator /(float arg);
+        vec3 operator +(vec3 arg);
+        vec3 operator -(vec3 arg);
+        vec3 operator *(float arg);
         bool operator ==(vec3 arg) const;
         bool operator !=(vec3 arg) const;
+        float& operator[](int arg);
 
         private:
             float x, y, z;

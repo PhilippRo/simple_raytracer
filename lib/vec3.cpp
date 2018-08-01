@@ -146,6 +146,16 @@ bool vec3::operator !=(vec3 arg) const
     }
 }
 
+float& vec3::operator[](int arg) {
+    switch(arg) {
+        case 0: return this->x;
+        case 1: return this->y;
+        case 2: return this->z;
+        default: throw std::out_of_range("the index if a vec3 must be greater "
+                "than -1 and less than 3");
+    }
+}
+
 ///Non Member Functions
 
 float dotp(vec3 arg1, vec3 arg2)
