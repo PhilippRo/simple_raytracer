@@ -1,8 +1,4 @@
-#include <console.h>
 #include <SFML/Graphics.hpp>
-#include <vector.h>
-
-using namespace math::vector;
 
 int main()
 {

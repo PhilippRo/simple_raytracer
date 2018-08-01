@@ -1,6 +1,10 @@
 #pragma once
 
-namespace prmitives{
+#include <vec3.h>
+
+using namespace math::vector;
+
+namespace primitives{
   namespace polygons{
 
 
@@ -9,7 +13,7 @@ namespace prmitives{
     public:
 
       triangle();
-      triangle(vec3 _a, vec3 _b, vec3_c);
+      triangle(vec3 _a, vec3 _b, vec3 _c);
 
       void set_points(vec3 _a, vec3 _b, vec3 _c);
 
