@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <math.h>
+#include <cmath>
 #include <vec3.h>
 
 using namespace math::vector;
