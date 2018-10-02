@@ -27,4 +27,15 @@ namespace primitives{
 
     };
   }
+
+  class material{
+  public:
+       //material(color _col);
+
+  private:
+      //color col;
+      float alpha = 0;
+      float refrac = 1;
+
+  };
 }

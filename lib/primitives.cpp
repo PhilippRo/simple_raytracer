@@ -45,3 +45,10 @@ vec3 triangle::get_c()
 {
   return this->c;
 }
+
+/*primitives::material::material(color _col)
+{
+    col = _col;
+    alpha = 0;
+    refrac = 1;
+}*/
