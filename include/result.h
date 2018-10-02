@@ -3,7 +3,7 @@
 #include<exception>
 
 ///
-/// This call stores results with an boolea flag, if the computation
+/// This call stores results with an boolean flag, if the computation
 /// was successfull or not.
 ///
 /// example:
