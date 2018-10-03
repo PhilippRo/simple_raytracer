@@ -44,10 +44,11 @@ bitmap world::rasterize()
 
             for(std::map <int, triangle>::iterator it = objects.begin(); it != objects.end(); ++it)
             {
-                //std::cout << "Checking colission of Ray" << x << "   " << y << " with object " << it->first << std::endl;
+
                 result<vec3> point = math::linalg::ray_plane_intersection(screen_ray, it->second);
 
                 if(math::linalg::is_point_in_tris(point.unwrap(), it->second))
+
                 {
                     picture.set_pixel(x, y, color(255, 255, 255)); //TODO: Change Color to Material
                 }
