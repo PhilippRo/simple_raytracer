@@ -12,7 +12,7 @@ int main()
     vec3 camera = vec3(0, 0, -1);
     world welt{W, H, camera};
 
-    welt.add_object(triangle(vec3(2, 0, 1), vec3(4, 0, 1), vec3(3, 2, 1)));
+    welt.add_object(triangle(vec3(0.2, 0, 1), vec3(0.4, 0, 1), vec3(0.3, 0.2, 1)));
     bitmap picture = welt.rasterize();
 
     sf::Image result;
