@@ -32,7 +32,7 @@ result<math::vector::vec3> math::linalg::check_for_collision(ray mray,
 {
     auto collision = math::linalg::solve_eqn_array_3({mtri.get_a() - mtri.get_b(),
         mtri.get_a() - mtri.get_c(), vec3() - mray.get_translation(),
-        mtri.get_a() - mray.get_support()});
+        mray.get_support() - mtri.get_a() });
 
     // calculate the unit vectors of the triangle. This is vital to calculate a
     // proper projection on the side of the triangle, to check if the vector is
