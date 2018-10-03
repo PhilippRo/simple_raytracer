@@ -36,3 +36,4 @@ result_type&& result<result_type>::unwrap(){
 }
 
 template class result<math::vector::vec3>;
+template class result<bool>;

@@ -23,5 +23,24 @@ namespace math{
         ///
         result<vec3> check_for_collision(ray mray, 
             primitives::polygons::triangle mtri );
+
+        ///
+        /// \brief math::linalg::line_plane_intersection Check where ray collides with triangle plane
+        /// \param mray
+        /// \param mtris
+        /// \return
+        ///
+
+        result<math::vector::vec3> ray_plane_intersection(ray mray,
+              primitives::polygons::triangle mtris);
+
+        ///
+        /// \brief is_point_in_tris
+        /// \param point
+        /// \param mtris
+        /// \return
+        ///
+
+        bool is_point_in_tris(vec3 point, primitives::polygons::triangle mtris);
     }
 }

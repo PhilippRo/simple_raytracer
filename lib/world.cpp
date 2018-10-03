@@ -35,9 +35,9 @@ bitmap world::rasterize()
     {
         for(int y = 0; y < screen_h; y++)
         {
-            vec3 screen = vec3(-1+2*x/screen_w, -1+2*y/screen_h, 0);
-            vec3 trans =  screen - camera;
-            vec3 supp = screen;
+            vec3 screen = vec3(-1+2*(float)x/screen_w, -1+2*(float)y/screen_h, 0);
+            vec3 trans =  camera - screen ;
+            vec3 supp = camera;
 
             ray screen_ray = ray(trans, supp);
             rays.push_back(screen_ray);
@@ -45,9 +45,9 @@ bitmap world::rasterize()
             for(std::map <int, triangle>::iterator it = objects.begin(); it != objects.end(); ++it)
             {
                 //std::cout << "Checking colission of Ray" << x << "   " << y << " with object " << it->first << std::endl;
-                result<vec3> point = math::linalg::check_for_collision(screen_ray, it->second);
+                result<vec3> point = math::linalg::ray_plane_intersection(screen_ray, it->second);
 
-                if(point.is_ok())
+                if(math::linalg::is_point_in_tris(point.unwrap(), it->second))
                 {
                     picture.set_pixel(x, y, color(255, 255, 255)); //TODO: Change Color to Material
                 }

@@ -12,9 +12,10 @@ int main()
     vec3 camera = vec3(0, 0, -1);
     world welt{W, H, camera};
 
-    welt.add_object(triangle(vec3(0.2, 0, 1), vec3(0.4, 0, 1), vec3(0.3, 0.2, 1)));
+    welt.add_object(triangle(vec3(0, 0, 0), vec3(3, 0, 0), vec3(1, 1, 0)));
     bitmap picture = welt.rasterize();
 
+    //std::cout << math::linalg::is_point_in_tris(point, tris) << std::endl;
     sf::Image result;
     sf::Texture tex;
     sf::Sprite sp;
@@ -27,7 +28,7 @@ int main()
         for(int y = 0; y < H; y++)
         {
             color orig = picture.get_pixel(x, y);
-            std::cout << orig.get_r() << " " << orig.get_g() << " " << orig.get_b() << std::endl;
+            //std::cout << orig.get_r() << " " << orig.get_g() << " " << orig.get_b() << std::endl;
             sf::Color col = sf::Color(orig.get_r(), orig.get_g(), orig.get_b());
             result.setPixel(x, y, col);
         }
