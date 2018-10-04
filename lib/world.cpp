@@ -72,7 +72,7 @@ bitmap world::rasterize()
                     if(math::linalg::is_point_in_tris(point.unwrap(), it->second))
 
                     {
-                        picture.set_pixel(x, y, color(0, 255, 255)); /// \todo Change Color to Material
+                        picture.set_pixel(x, y, it->second.get_material().get_color()); /// \todo Change Color to Material
                     }
                 }
             }

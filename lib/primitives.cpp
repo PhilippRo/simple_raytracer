@@ -27,6 +27,8 @@ triangle::triangle(vec3 _a, vec3 _b, vec3 _c)
   support = a;
   normal = crossp(b - a, c - a);
 
+  mat = material(color(255, 255, 255));
+
 }
 
 void triangle::set_points(vec3 _a, vec3 _b, vec3 _c)
@@ -94,4 +96,9 @@ material::material(color _col, float _refrac)
     col = _col;
     alpha = 1;
     refrac = _refrac;
+}
+
+color material::get_color()
+{
+    return col;
 }
