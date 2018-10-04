@@ -1,43 +1,40 @@
 #include <SFML/Graphics.hpp>
 #include <world.h>
 
+sf::Image parseBitmap(bitmap picture);
+
 int main()
 {
-    const unsigned int W = 800;
-    const unsigned int H = 600;
+    const unsigned int W = 200;
+    const unsigned int H = 200;
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(W, H), "simple_raytracer");
     // Start the game loop
 
-    vec3 camera = vec3(0, 0, -1);
+    vec3 camera = vec3(0, 0, -0.1);
     world welt{W, H, camera};
 
-    welt.add_object(triangle(vec3(0, 0, 0), vec3(3, 0, 0), vec3(1, 1, 0)));
+    int tris1 = welt.add_object(triangle(vec3(-0.2, 0, 0), vec3(0.4, 0, 0), vec3(0, 0.2, 0)));
     bitmap picture = welt.rasterize();
 
-    sf::Image result;
     sf::Texture tex;
     sf::Sprite sp;
 
-    result.create(W, H, sf::Color::Blue);
     tex.create(W, H);
 
-    for(int x = 0; x < W; x++)
-    {
-        for(int y = 0; y < H; y++)
-        {
-            color orig = picture.get_pixel(x, y);
-            sf::Color col = sf::Color(orig.get_r(), orig.get_g(), orig.get_b());
-            result.setPixel(x, y, col);
-        }
-    }
-
-    tex.loadFromImage(result);
+    tex.loadFromImage(parseBitmap(picture));
     sp.setTexture(tex);
 
-    while (window.isOpen())
+    while(window.isOpen())
     {
         window.draw(sp);
+
+        welt.manipulate_object(tris1, 1, 0.01);
+
+        bitmap picture = welt.rasterize();
+        tex.loadFromImage(parseBitmap(picture));
+        sp.setTexture(tex);
+
         // Process events
         sf::Event event;
         while (window.pollEvent(event))
@@ -48,6 +45,25 @@ int main()
         }
         // Update the window
         window.display();
+        window.clear();
     }
     return EXIT_SUCCESS;
+}
+
+sf::Image parseBitmap(bitmap picture)
+{
+    sf::Image result;
+    result.create(picture.get_width(), picture.get_height(), sf::Color::Black);
+
+    for(int x = 0; x < picture.get_width(); x++)
+    {
+        for(int y = 0; y < picture.get_height(); y++)
+        {
+            color orig = picture.get_pixel(x, y);
+            sf::Color col = sf::Color(orig.get_r(), orig.get_g(), orig.get_b());
+            result.setPixel(x, y, col);
+        }
+    }
+
+    return result;
 }

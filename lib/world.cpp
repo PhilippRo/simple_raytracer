@@ -19,6 +19,25 @@ int world::add_object(triangle object)
   return next_index-1;
 }
 
+bool world::manipulate_object(int id, int mode, float param)
+{
+    if(mode == 1 || mode == 2 || mode == 3)
+    {
+        vec3 a = objects.at(id).get_a();
+        vec3 b = objects.at(id).get_b();
+        vec3 c = objects.at(id).get_c();
+
+        vec3 offset = vec3();
+        offset[mode] = param;
+
+        objects.at(id).set_points(a + offset, b + offset, c + offset);
+        return true;
+    }else
+    {
+        return false;
+    }
+}
+
 bool world::remove_object(int id)
 {
     objects.erase(id);
@@ -29,15 +48,16 @@ bool world::remove_object(int id)
 bitmap world::rasterize()
 {
     std::vector <ray> rays;
-    bitmap picture = bitmap(screen_w, screen_h);
+    bitmap picture{screen_w, screen_h};
 
-    for(int x = 0; x < screen_w; x++)
+    vec3 supp = camera;
+
+    for(int x = 0; x < picture.get_width(); x++)
     {
-        for(int y = 0; y < screen_h; y++)
+        for(int y = 0; y < picture.get_height(); y++)
         {
             vec3 screen = vec3(-1+2*(float)x/screen_w, -1+2*(float)y/screen_h, 0);
             vec3 trans =  camera - screen ;
-            vec3 supp = camera;
 
             ray screen_ray = ray(trans, supp);
             rays.push_back(screen_ray);
@@ -47,10 +67,13 @@ bitmap world::rasterize()
 
                 result<vec3> point = math::linalg::ray_plane_intersection(screen_ray, it->second);
 
-                if(math::linalg::is_point_in_tris(point.unwrap(), it->second))
-
+                if(point.is_ok())
                 {
-                    picture.set_pixel(x, y, color(255, 255, 255)); //TODO: Change Color to Material
+                    if(math::linalg::is_point_in_tris(point.unwrap(), it->second))
+
+                    {
+                        picture.set_pixel(x, y, color(0, 255, 255)); /// \todo Change Color to Material
+                    }
                 }
             }
         }

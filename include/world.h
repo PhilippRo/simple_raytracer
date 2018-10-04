@@ -12,6 +12,10 @@
 using namespace primitives::polygons;
 using namespace math::vector;
 
+///
+/// \brief World Class to arrange objects and Camera in 3D-Space
+///
+
 class world{
 
 private:
@@ -28,6 +32,8 @@ public:
   world(int screen_w, int screen_h, vec3 camera);
 
   int add_object(triangle object);
+
+  bool manipulate_object(int id, int mode, float param); ///\todo Use Function Pointer to manipulate Tris
 
   bool remove_object(int id);
 
