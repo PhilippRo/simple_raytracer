@@ -32,6 +32,8 @@ public:
      ///
      material(color _col, float _refrac);
 
+     color get_color();
+
 private:
     color col;
     float alpha;
